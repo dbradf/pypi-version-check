@@ -47,10 +47,8 @@ jobs:
       - name: Get artifacts
         uses: actions/download-artifact@v2
 
-      - run: ls
-
       - name: Upload release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "pypi-version-check"
+          artifacts: "pypi-version-check/*"
           token: ${{ secrets.GITHUB_TOKEN }}
