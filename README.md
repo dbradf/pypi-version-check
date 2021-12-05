@@ -7,18 +7,20 @@ forget to update the version before trying to deploy it.
 ## Usage
 
 ```
-pypi-version-check  0.1.0
+pypi-version-check  0.2.0
 Check if the version defined in pyproject.toml already exists in pypi
 
 USAGE:
-    pypi-version-check [OPTIONS]
+    pypi-version-check [FLAGS] [OPTIONS]
 
 FLAGS:
-    -h, --help       Prints help information
-    -V, --version    Prints version information
+        --check-changelog    Check for a changelog entry with the specified version
+    -h, --help               Prints help information
+    -V, --version            Prints version information
 
 OPTIONS:
-        --project-path <project-path>    Path to directory containing pyproject.toml [default: .]
+        --changelog-name <changelog-name>     [default: CHANGELOG.md]
+        --project-path <project-path>        Path to directory containing pyproject.toml [default: .]      
 ```
 
 When the version has been updated correctly:
@@ -37,4 +39,15 @@ Version 0.1.2 already exists, latest version is 0.1.2
 Error: "Conflicting version found"
 $ echo $?
 1
+```
+
+Checking that the changelog was updated
+```bash
+$ pypi-version-check --check-changelog
+Checking for version: 3.4.3
+Checking changelog at: CHANGELOG.md
+Unable to find version 3.4.3 in CHANGELOG.md
+Changelog should contain version with the follow format:
+        ## <version> - YYYY-MM-DD
+Error: "Changelog file not updated"
 ```
