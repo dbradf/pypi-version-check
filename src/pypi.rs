@@ -27,7 +27,7 @@ pub struct PypiInfo {
     pub maintainer_email: String,
     pub name: String,
     pub package_url: String,
-    pub platform: String,
+    pub platform: Option<String>,
     pub project_url: String,
     pub project_urls: HashMap<String, String>,
     pub release_url: String,
