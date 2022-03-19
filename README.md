@@ -6,7 +6,7 @@ forget to update the version before trying to deploy it.
 
 ## Usage
 
-```
+```bash
 pypi-version-check  0.2.0
 Check if the version defined in pyproject.toml already exists in pypi
 
@@ -24,6 +24,7 @@ OPTIONS:
 ```
 
 When the version has been updated correctly:
+
 ```bash
 $ pypi-version-check
 Checking for version: 0.1.3
@@ -32,6 +33,7 @@ $ echo $?
 ```
 
 When the version needs to be updated:
+
 ```bash
 $ pypi-version-check
 Checking for version: 0.1.2
@@ -42,6 +44,7 @@ $ echo $?
 ```
 
 Checking that the changelog was updated
+
 ```bash
 $ pypi-version-check --check-changelog
 Checking for version: 3.4.3

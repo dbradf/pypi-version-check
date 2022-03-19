@@ -1,5 +1,6 @@
-use std::{collections::HashMap, error::Error};
+use std::collections::HashMap;
 
+use anyhow::Result;
 use serde::Deserialize;
 
 #[derive(Debug, Deserialize, Clone)]
@@ -55,7 +56,6 @@ pub struct PypiRelease {
     pub upload_time_iso_8601: String,
     pub url: String,
     pub yanked: bool,
-    pub yanked_reson: Option<String>,
 }
 
 #[derive(Debug, Deserialize, Clone)]
@@ -67,7 +67,7 @@ pub struct PypiProject {
     pub vulnerabilities: Vec<String>,
 }
 
-pub async fn get_project_info(project: &str) -> Result<PypiProject, Box<dyn Error>> {
+pub async fn get_project_info(project: &str) -> Result<PypiProject> {
     Ok(
         reqwest::get(format!("https://pypi.org/pypi/{}/json", project))
             .await?

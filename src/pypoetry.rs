@@ -1,5 +1,6 @@
+use anyhow::Result;
 use serde::Deserialize;
-use std::{error::Error, path::Path};
+use std::path::Path;
 
 #[derive(Deserialize, Debug, Clone)]
 pub struct Poetry {
@@ -22,7 +23,7 @@ pub struct PyProjectConfig {
     pub tool: Tool,
 }
 
-pub fn read_pyproject_toml(location: &Path) -> Result<PyProjectConfig, Box<dyn Error>> {
+pub fn read_pyproject_toml(location: &Path) -> Result<PyProjectConfig> {
     let contents = std::fs::read_to_string(location)?;
     Ok(toml::from_str(&contents)?)
 }
